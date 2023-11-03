@@ -1,0 +1,16 @@
+name: Har Pito
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 9999
+    steps:
+    - name: Downloading
+      run: |
+            Invoke-WebRequest https://dl.google.com/edgedl/chrome-remote-desktop/chromeremotedesktophost.msi
+    - name: Installingh       
+      run: |
+            ./chromeremotedesktophost.msi 
+    - name: LLL
+      run: |
+            & "${Env:PROGRAMFILES(X86)}\Google\Chrome Remote Desktop\CurrentVersion\remoting_start_host.exe" --code="4/0AfJohXkqmJup82tQK_VjPV7YKdHix8va_dSFExbwYL4ym3YDHfw9r3uI-6gj0Wfqn9-iaA" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$Env:COMPUTERNAME
